@@ -10,12 +10,12 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    WEB_BANNER = 1,
-    WEB_TAKEOVER = 2,
-    VIDEO_TAKEOVER = 3,
-    AD_BANNER = 4,
-    AD_TAKEOVER = 5,
-    NETWORK_BANNER = 6,
+    WEB_BANNER      = 1,
+    WEB_TAKEOVER    = 2,
+    VIDEO_TAKEOVER  = 3,
+    AD_BANNER       = 4,
+    AD_TAKEOVER     = 5,
+    NETWORK_BANNER  = 6,
     NETWORK_TAKEOVER = 7
 } FlurryAdType;
 
@@ -82,6 +82,21 @@ typedef enum {
  *  @brief [Deprecated] This method is deprecated. -[spaceShouldDisplay:interstitial:] should be used.
  */
 - (BOOL)spaceShouldDisplay:(NSString*)adSpace  forType:(FlurryAdType)type __attribute__ ((deprecated));
+
+/*!
+ *  @brief Invoked when an ad is rendered.
+ *  @since 5.1.0
+ *
+ *  This method informs the user an ad was retrieved, and successful in displaying to the user.
+ *
+ *  @see FlurryAds#displayAdForSpace:view: for details on the method that will invoke this delegate. \n
+ *  FlurryAds#fetchAndDisplayAdForSpace:view:size: for details on the method that will invoke this delegate.
+ *
+ *  @param adSpace The placement of an ad in your app, where placement may
+ *  be splash screen for SPLASH_AD.
+ *  @param interstitial YES/NO if the space to display will be an interstitial.
+ */
+- (void) spaceDidRender:(NSString *)space interstitial:(BOOL)interstitial;
 
 /*!
  *  @brief Invoked when an ad fails to render.
@@ -222,6 +237,15 @@ typedef enum {
  *  This is the id for your app as set in InMobi, found here: https://www.inmobi.com/pub/mysite.html?platFormType=all
  */
 - (NSString *)appSpotInMobiAppKey;
+
+
+/*!
+ *  @brief The FAcebook Audience network APID.
+ *  @since 5.1.0
+ *
+ *  This is the id for your app as set in FB Audience Network developer portal :https://developers.facebook.com
+ */
+- (NSString *)appSpotFANAppPlacementID;
 
 /*!
  *  @brief The AdMob Publisher Id.
