@@ -195,6 +195,18 @@ typedef enum {
 
 
 /*!
+ *  @brief Informational callback invoked when an ad is clicked for the specified @c adSpace.
+ *         and the click action fails
+ *  @since 6.0.0
+ *
+ *  @param adSpace The placement of an ad in your app, where placement may
+ *  be splash screen for SPLASH_AD.
+ */
+- (void) spaceClickActionDidFail:(NSString*)adSpace error:(NSError *)error;
+
+
+
+/*!
  *  @brief Invoked when a video finishes playing
  *  @since 4.2.0
  *
@@ -205,6 +217,17 @@ typedef enum {
  */
 - (void)videoDidFinish:(NSString *)adSpace;
 
+
+/*!
+ *  @brief Invoked when a video finishes playing
+ *  @since 6.0.0
+ *
+ *  This method informs the app that a video associated with an ad has NOT finished playing
+ *
+ *  @param adSpace The placement of an ad in your app, where placement may be splash screen for SPLASH_AD.
+ *
+ */
+- (void)videoDidNotFinish:(NSString *)adSpace;
 
 @optional
 
